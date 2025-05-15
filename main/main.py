@@ -26,7 +26,7 @@ class Product:
 
 class ShoppingCart:
     """"
-    Lägger till produkter i kundvagn
+    Lägger till produkter i kundvagn och kan ta bort dem
     """
     def __init__(self):
         self.items = []
@@ -34,6 +34,13 @@ class ShoppingCart:
     def add(self, product):
         self.items.append(product)
         print(f"Added '{product.name}' to cart.")
+
+    def remove(self, index):
+        if 0 <= index < len(self.items):
+            removed = self.items.pop(index)
+            print(f"Removed '{removed.name}' from cart.")
+        else:
+            print("Invalid item number.")
 
     def show(self):
         if not self.items:
@@ -67,22 +74,24 @@ def search_products(search_terms):
         return []
 
 def display_products(products):
-    for idx, product in enumerate(products, 1):
-        print(f"Product #{idx}")
+    for i, product in enumerate(products, 1):
+        print(f"Product #{i}")
         product.visa_produkter()
 
 if __name__ == "__main__":
     cart = ShoppingCart()
     while True:
-        print("""
-              [1] Search for products
-              [2] View cart
-              [3] Quit
+        print(f"""
+{"-" * 70}
+                [1] 🔍 Search for products
+                [2] 🛒 View your cart
+                [3] 🗑️ Remove an item from your cart
+                [4] 🚪 Quit
+{"-" * 70}
               """)
 
-        choice = input("What do you want to do? ").strip().lower()
-        if choice == "3":
-            print("Bye!")
+        choice = input("What would you like to do? ").strip()
+        if choice == "4":
             break
         elif choice == "2":
             cart.show()
@@ -91,7 +100,7 @@ if __name__ == "__main__":
             products = search_products(search_terms)
 
             if not products:
-                print("No products found.")
+                print("No products found")
                 continue
             display_products(products)
 
@@ -100,12 +109,25 @@ if __name__ == "__main__":
                 if choice == "back":
                     break
                 if choice.isdigit():
-                    idx = int(choice) - 1
-                    if 0 <= idx < len(products):
-                        cart.add(products[idx])
+                    ii = int(choice) - 1
+                    if 0 <= ii < len(products):
+                        cart.add(products[ii])
                     else:
-                        print("Invalid number.")
+                        print("Invalid number")
                 else:
-                    print("Please enter a number or 'back'.")
+                    print("Not a valid number, try again or type 'back'")
+        elif choice == "3":
+            cart.show()
+            if not cart.items:
+                print('Cart is empty')
+                continue
+            remove_choice = input("Enter item number to remove (or 'back' to cancel): ").strip()
+            if remove_choice == "back":
+                continue
+            if remove_choice.isdigit():
+                i = int(remove_choice) - 1
+                cart.remove(i)
+            else:
+                print("Not a valid number, try again or type 'back'")
         else:
-            print("Unknown command.")
+            print("Unknown input")
