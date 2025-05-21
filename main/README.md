@@ -11,7 +11,7 @@ WorstBuy är en terminalapplikation skriven i Python där du kan söka efter pro
 - **Spara/Ladda:** Kundvagn och orderhistorik sparas automatiskt i JSON-filer.
 
 
-
+### Förutsättningar
 
 - Python 3.7+
 - [requests](https://pypi.org/project/requests/)
