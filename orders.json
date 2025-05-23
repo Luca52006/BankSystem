@@ -1,0 +1,21 @@
+[
+  {
+    "order_id": 1,
+    "date": "2025-05-23 09:02:00",
+    "products": [
+      {
+        "name": "Ember - Temperature Control Smart Mug² - 10 oz - White",
+        "description": null,
+        "image": "https://pisces.bbystatic.com/prescaled/500/500/image2/BestBuy_US/images/products/6367/6367425cv11d.jpg",
+        "price": 129.99
+      },
+      {
+        "name": "Ember - Travel Mug Sipping Lid - Gloss Black",
+        "description": null,
+        "image": "https://pisces.bbystatic.com/prescaled/500/500/image2/BestBuy_US/images/products/2d82c29a-5d4b-46b8-8e58-ac9c938c8051.png",
+        "price": 14.99
+      }
+    ],
+    "total": 144.98000000000002
+  }
+]
